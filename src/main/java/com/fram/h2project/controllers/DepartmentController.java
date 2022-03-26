@@ -2,6 +2,7 @@ package com.fram.h2project.controllers;
 
 import com.fram.h2project.entity.Department;
 
+import com.fram.h2project.errors.DepartmentNotFoundException;
 import com.fram.h2project.service.DepartmentServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,7 @@ public class DepartmentController {
       return departmentService.getDepartments();
     }
     @GetMapping("/{id}")
-    public Department getDepartmentById(@PathVariable("id") Long departmentId){
+    public Department getDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.getDepartmentById(departmentId);
     }
 

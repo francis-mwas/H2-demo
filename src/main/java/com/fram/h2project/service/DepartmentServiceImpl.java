@@ -1,6 +1,7 @@
 package com.fram.h2project.service;
 
 import com.fram.h2project.entity.Department;
+import com.fram.h2project.errors.DepartmentNotFoundException;
 import com.fram.h2project.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DerpatmentService {
@@ -27,8 +29,11 @@ public class DepartmentServiceImpl implements DerpatmentService {
     }
 
     @Override
-    public Department getDepartmentById(Long departmentId) {
-        return departmentRepository.findById(departmentId).get();
+    public Department getDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+
+        Optional<Department> department = departmentRepository.findById(departmentId);
+        if(department.isEmpty()) throw new DepartmentNotFoundException("Department Not Found");
+        return department.get();
     }
 
     @Override
