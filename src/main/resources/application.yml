@@ -1,0 +1,64 @@
+server:
+    port: 8181
+
+
+spring:
+    profiles:
+        active: dev
+
+---
+spring:
+    profiles: dev
+    datasource:
+        password: mwas
+        url: jdbc:postgresql://localhost:5430/departments
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: truecoc
+        show-sql: true
+welcome:
+    message: Welcome to js tips website
+
+
+---
+spring:
+    profiles: qa
+    datasource:
+        password: mwas
+        url: jdbc:postgresql://localhost:5430/departments-qa
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: truecoc
+        show-sql: true
+welcome:
+    message: Welcome to js tips website
+
+
+---
+spring:
+    profiles: prod
+    datasource:
+        password: mwas
+        url: jdbc:postgresql://localhost:5430/departments-prod
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: truecoc
+        show-sql: true
+welcome:
+    message: Welcome to js tips website
+
