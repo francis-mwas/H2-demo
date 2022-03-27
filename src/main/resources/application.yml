@@ -23,6 +23,13 @@ spring:
         show-sql: true
 welcome:
     message: Welcome to js tips website
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+                exclude: "env,beans"
+
 
 
 ---
